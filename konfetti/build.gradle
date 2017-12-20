@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'Konfetti'
+    orgName = 'danielmartinus'
+
+    publishedGroupId = 'nl.dionsegijn'
+    artifact = 'konfetti'
+    libraryVersion = "1.1.0"
+
+    libraryName = 'konfetti'
+    libraryDescription = 'Lightweight particle system to celebrate with confetti in your app'
+
+    siteUrl = 'https://github.com/DanielMartinus/Konfetti'
+    gitUrl = 'https://github.com/DanielMartinus/Konfetti.git'
+
+    developerId = 'danielmartinus'
+    developerName = 'Dion Segijn'
+    developerEmail = 'danielsegijn@gmail.com'
+
+    licenseName = 'ISC'
+    licenseUrl = 'https://github.com/DanielMartinus/Konfetti/blob/master/LICENSE'
+    allLicenses = ["ISC"]
+}
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.1"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 3
+        versionName libraryVersion
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.8.9'
+}
+
+apply from: rootProject.file('gradle/install-v1.gradle')
+apply from: rootProject.file('gradle/bintray-android-v1.gradle')
